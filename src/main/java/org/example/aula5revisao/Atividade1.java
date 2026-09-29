@@ -13,8 +13,6 @@ public class Atividade1 {
         String nomeDoLanche;
         double valorLanche;
 
-
-
         System.out.print("Digite o nome do lanche: ");
         nomeDoLanche = sc.nextLine();
         System.out.print("Digite o valor do lanche: ");
@@ -26,6 +24,5 @@ public class Atividade1 {
         }else {
             System.out.printf("Ah, não ganhou desconto! O valor do %s é R$ %.2f\n" , nomeDoLanche, valorLanche);
         }
-
     }
 }

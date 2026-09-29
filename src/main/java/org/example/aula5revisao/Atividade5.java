@@ -1,6 +1,5 @@
 package org.example.aula5revisao;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Atividade5 {
@@ -17,10 +16,22 @@ public class Atividade5 {
 
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < 3; i++) {
 
 
+        for (int i = 1; i <= 3; i++) {
+            Produto novoProduto = new Produto();
+            System.out.println("Digite o nome do produto: ");
+            novoProduto.nome = sc.nextLine();
+            System.out.println("Insira o valor do produto: ");
+            novoProduto.preco = sc.nextDouble();
+            sc.nextLine();
+            if (novoProduto.preco > 100){
+                System.out.printf("O produto %s tem o valor de %.2f. QUE CARO!", novoProduto.nome, novoProduto.preco);
+                sc.nextLine();
+            } else {
+                System.out.printf("O poduto %s tem o valor de R$%.2f. Agora cabe no bolso :D", novoProduto.nome, novoProduto.preco);
+                sc.nextLine();
+            }
         }
-
     }
 }

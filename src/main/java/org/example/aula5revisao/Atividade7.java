@@ -1,36 +1,31 @@
 package org.example.aula5revisao;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Atividade7 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        /*7 -  DESAFIO — Sistema de Cadastro de Alunas
-        Você vai construir um programa que cadastra alunas, calcula a média delas e diz se foram aprovadas. O programa fica rodando até a pessoa escolher sair.
 
-        Este desafio tem regras de construção obrigatórias. Não é só fazer funcionar, é fazer funcionando do jeito pedido. Sigam as instruções solicitadas, pois o objetivo é praticar as estruturas que vimos essa semana.
+        /*
+        7 - DESAFIO — Sistema de Cadastro de Alunas
 
-        O que o programa faz
-        Pergunta se a pessoa quer iniciar: 1 para continuar, 2 para sair
-        Se escolher 1:
-        pede a primeira nota
-        pede a segunda nota
-        calcula a média
-        pede o nome da aluna
-        decide se ela foi aprovada (média 6 ou mais)
-        mostra uma frase com o nome, as duas notas, a média e se foi aprovada
-        volta pro menu
-        Se escolher 2: mostra uma mensagem de despedida e encerra
-        Se digitar qualquer outra coisa: avisa que a opção é inválida e volta pro menu */
+        Você vai construir um programa que cadastra alunas, calcula a média delas
+        e diz se foram aprovadas. O programa fica rodando até a pessoa escolher sair.
+        */
 
         boolean continuar = true;
+
+        // Lista que vai guardar todas as alunas cadastradas
+        ArrayList<Aluna> alunas = new ArrayList<>();
 
         while (continuar) {
 
             System.out.println();
-            System.out.println("===== SISTEMA DE CADASTRO DE ALUNAS DA MARY=====");
-            System.out.println("1 - Cadastrar aluna(o) e nota");
-            System.out.println("2 - Sair");
+            System.out.println("===== SISTEMA DE CADASTRO DE ALUNAS DA MARY =====");
+            System.out.println("1 - Cadastrar aluna e nota");
+            System.out.println("2 - Mostrar alunas cadastradas");
+            System.out.println("3 - Sair");
             System.out.print("Digite uma opção: ");
 
             int opcao = sc.nextInt();
@@ -38,14 +33,23 @@ public class Atividade7 {
             switch (opcao) {
 
                 case 1:
-
                     Aluna aluna = new Aluna();
 
-                    System.out.print("Digite a primeira nota: ");
-                    aluna.nota = sc.nextDouble();
+                    do {
+                        System.out.print("Digite a primeira nota (0 a 10): ");
+                        aluna.nota = sc.nextDouble();
+                        if (aluna.nota < 0 || aluna.nota > 10) {
+                            System.out.println("Nota inválida! Digite uma nota entre 0 e 10.");
+                        }
+                    } while (aluna.nota < 0 || aluna.nota > 10);
 
-                    System.out.print("Digite a segunda nota: ");
-                    aluna.nota2 = sc.nextDouble();
+                    do {
+                        System.out.print("Digite a segunda nota (0 a 10): ");
+                        aluna.nota2 = sc.nextDouble();
+                        if (aluna.nota2 < 0 || aluna.nota2 > 10) {
+                            System.out.println("Nota inválida! Digite uma nota entre 0 e 10.");
+                        }
+                    } while (aluna.nota2 < 0 || aluna.nota2 > 10);
 
                     aluna.media = (aluna.nota + aluna.nota2) / 2;
 
@@ -54,34 +58,72 @@ public class Atividade7 {
                     System.out.print("Digite o nome da aluna: ");
                     aluna.nome = sc.nextLine();
 
-                    if (aluna.media >= 6) {
-                        aluna.passou = true;
+                    aluna.passou = aluna.media >= 6;
+
+                    // Adiciona a aluna na lista
+                    alunas.add(aluna);
+
+                    String resultado;
+
+                    if (aluna.passou) {
+                        resultado = "Aprovada";
                     } else {
-                        aluna.passou = false;
+                        resultado = "Reprovada";
                     }
 
                     System.out.printf(
-                            "%nNome: %s%nNota 1: %.1f%nNota 2: %.1f%nMédia: %.1f%nPassou: %b%n",
+                            "%nNome: %s%nNota 1: %.1f%nNota 2: %.1f%nMédia: %.1f%nResultado: %s%n",
                             aluna.nome,
                             aluna.nota,
                             aluna.nota2,
                             aluna.media,
-                            aluna.passou
+                            resultado
                     );
+
                     break;
 
                 case 2:
+
+                    if (alunas.isEmpty()) {
+                        System.out.println("Nenhuma aluna cadastrada.");
+                    } else {
+
+                        System.out.println();
+                        System.out.println("===== ALUNAS CADASTRADAS =====");
+
+                        for (Aluna alunaCadastrada : alunas) {
+
+                            String resultadoAluna;
+
+                            if (alunaCadastrada.passou) {
+                                resultadoAluna = "Aprovada";
+                            } else {
+                                resultadoAluna = "Reprovada";
+                            }
+
+                            System.out.printf(
+                                    "%nNome: %s%nNota 1: %.1f%nNota 2: %.1f%nMédia: %.1f%nResultado: %s%n",
+                                    alunaCadastrada.nome,
+                                    alunaCadastrada.nota,
+                                    alunaCadastrada.nota2,
+                                    alunaCadastrada.media,
+                                    resultadoAluna
+                            );
+                        }
+                    }
+
+                    break;
+                case 3:
                     System.out.println("Até logo! Obrigada por utilizar o sistema.");
                     continuar = false;
                     break;
-                default:
 
-                    System.out.println("Opção inválida! Digite 1 ou 2.");
+                default:
+                    System.out.println("Opção inválida! Digite 1, 2 ou 3.");
                     break;
             }
         }
 
         sc.close();
-
     }
 }
