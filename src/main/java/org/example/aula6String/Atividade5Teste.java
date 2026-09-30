@@ -1,8 +1,8 @@
-package org.example.aula6;
+package org.example.aula6String;
 
 import java.util.Scanner;
 
-public class AtividadeString5 {
+public class Atividade5Teste {
     public static void main(String[] args) {
         //5 — Peça o nome da pessoa duas vezes e diga se os dois são iguais, ignorando maiúsculas e minúsculas.
         //Digite seu nome: Ana
@@ -13,15 +13,17 @@ public class AtividadeString5 {
         String nomeMinusculo;
         String nomeMaiusculo;
 
-        System.out.println("Digite seu nome em minusculo: ");
+        System.out.println("Digite seu nome minusculo: ");
         nomeMinusculo = sc.nextLine();
-        System.out.println("Digite seu nome em maiusculo: ");
+        System.out.println("Digite seu nome maiusculo: ");
         nomeMaiusculo = sc.nextLine();
 
-        System.out.println(nomeMaiusculo.equalsIgnoreCase (nomeMinusculo));
+        System.out.println(nomeMinusculo.equalsIgnoreCase(nomeMaiusculo));
 
 
-
+        // NOME é igual (ignora se ele ta com caps ou nao) a nome ?
+                            //equalIgnoreCase
+        // NOME é igual a nome? (equal) não
 
     }
 }
