@@ -7,5 +7,6 @@ public class Atividade2 {
         for(int i = 10; i > 0; i= i - 1){
             System.out.println(i);
         }
+        System.out.println("Fim!");
     }
 }
