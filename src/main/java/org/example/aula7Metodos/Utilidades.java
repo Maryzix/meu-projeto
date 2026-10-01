@@ -18,7 +18,7 @@ public class Utilidades {
     //4 — Crie um metodo calcularMedia(double n1, double n2) que devolve a média das duas notas. No main, peça as duas notas com Scanner e mostre a média com duas casas decimais.
     static void calcularMedia(double n1, double n2){
         double media = (n1 + n2) / 2;
-        System.out.println(media);
+        System.out.printf("%.2f%n", media);
     }
 
     //5 — Crie um metodo ehMaiorDeIdade(int idade) que devolve true ou false. No main, peça a idade e use o retorno do metodo dentro de um if para imprimir se a pessoa é maior ou menor de idade.

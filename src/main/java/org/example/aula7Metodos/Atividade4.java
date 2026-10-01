@@ -11,9 +11,9 @@ public class Atividade4 {
         Scanner sc = new Scanner(System.in);
         double nota;
         double nota2;
-        System.out.println("Digite uma nota: ");
+        System.out.printf("Digite uma nota: ");
         nota = sc.nextDouble();
-        System.out.println("Digite outra nota: ");
+        System.out.printf("Digite outra nota: ");
         nota2 = sc.nextDouble();
 
         calcularMedia(nota, nota2);
