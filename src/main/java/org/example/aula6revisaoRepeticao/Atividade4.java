@@ -13,9 +13,7 @@ public class Atividade4 {
 
         for (int i = 1; i <= 10; i++) {
             int tabuada = i * numero;
-            System.out.println("A tabuada de " +numero+ " é: " +numero+ " * " +i+ " = " + tabuada);
+            System.out.println("A tabuada de " + numero + " é: " + numero + " * " +i+ " = " + tabuada);
         }
-
-
     }
 }
