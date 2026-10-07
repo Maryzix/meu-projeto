@@ -36,8 +36,6 @@ public class Operadores {
         System.out.println(c > d);
         System.out.println(c >= d);
 
-
-
         int idade = 20;
         boolean temCarteira = true;
 
@@ -46,7 +44,6 @@ public class Operadores {
         } else{
             System.out.println("Não pode, no no ");
         }
-
 
         int numero = 5;
         int resultado = numero % 2;
