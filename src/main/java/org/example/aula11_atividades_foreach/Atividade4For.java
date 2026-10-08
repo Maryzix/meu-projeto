@@ -11,7 +11,7 @@ public class Atividade4For {
         for(String nome : nomes){
             if ((nome.length() > 5)){
                 System.out.println("Esses nomes tem 5 letras: " + nome);
-                total = total + 1;
+                total += 1;
             }
         }
 
