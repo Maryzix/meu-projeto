@@ -2,6 +2,7 @@ package org.example.aula9_HashMap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Aula {
     public static void main(String[] args) {
@@ -29,5 +30,12 @@ public class Aula {
         System.out.println(emails.get("posicao 2"));
         System.out.println(idade.get("Ane") + " " + emails.get("Ane"));
         System.out.println(emails.getOrDefault("olá", "Posição inválida"));
+
+        HashMap<String, String> mapa = new  HashMap<>(Map.of("Maria", "maria@gmail.com", "Ana", "ana@gmail.com"));
+
+        Scanner sc = new Scanner(System.in);
+        String nome = sc.nextLine();
+
+        System.out.println(mapa.getOrDefault(nome, "Nome não encontrado."));
     }
 }
