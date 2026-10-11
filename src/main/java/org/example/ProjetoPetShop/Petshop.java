@@ -6,23 +6,33 @@ import java.util.Scanner;
 
 public class Petshop {
     public static void main (String [] args){
-
         Scanner sc = new Scanner(System.in);
-        Pet pet = new Pet();
 
-        System.out.println("=== FICHA DO PET ===\n");
-        System.out.println("Digite o nome do animal: ");
+        Pet pet = new Pet();
+        Pet[] lista = new Pet[5];
+
+        System.out.println("=== CADASTRO DO PET ===\n");
+
+        System.out.print("Digite o nome do animal: ");
         pet.nome = sc.nextLine();
-        System.out.println("Espécie: ");
+
+        System.out.print("Espécie: ");
         pet.especie = sc.nextLine();
-        System.out.printf("Peso: ");
+
+        System.out.print("Peso: ");
         pet.peso = sc.nextDouble();
 
-        System.out.printf("\nNome do pet: " + pet.nome);
-        System.out.printf("\nEspécie: " + pet.especie);
-        System.out.printf("\nPeso: %.1fkg", pet.peso);
-        pet.definirPorte();
+        lista[0] = pet;
 
+        System.out.println("\n--- PETS CADASTRADOS ---");
 
+        System.out.printf(
+                "%s (%s) - %.1f kg - Porte %s%n",
+                lista[0].nome,
+                lista[0].especie,
+                lista[0].peso,
+                lista[0].definirPorte()
+        );
+        sc.close();
     }
 }

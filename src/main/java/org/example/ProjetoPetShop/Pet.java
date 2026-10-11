@@ -5,13 +5,13 @@ public class Pet {
     String especie;
     double peso;
 
-    void definirPorte(){
+    String definirPorte(){
     if(peso < 10){
-            System.out.println("\nPorte: Pequeno");
+            return ("Pequeno");
         } else if(peso >= 10 && peso <= 25){
-            System.out.println("\nPorte: Médio");
+            return("Médio");
         }else {
-            System.out.println("\nPorte: Grande");
+            return("Grande");
         }
     }
 }
