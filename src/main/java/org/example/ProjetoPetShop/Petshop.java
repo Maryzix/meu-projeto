@@ -22,5 +22,12 @@ public class Petshop {
         System.out.printf("\nEspécie: " + especie);
         System.out.printf("\nPeso: %.1fkg", peso);
 
+        if(peso < 10){
+            System.out.println("\nPorte: Pequeno");
+        } else if(peso >= 10 && peso <= 25){
+            System.out.println("\nPorte: Médio");
+        }else {
+            System.out.println("\nPorte: Grande");
+        }
     }
 }
