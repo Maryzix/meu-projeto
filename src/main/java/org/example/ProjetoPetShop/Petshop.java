@@ -20,6 +20,7 @@ public class Petshop {
             System.out.println("\n===== SISTEMA DE CADASTRO DE PETS =====");
             System.out.println("1 - Cadastrar Pet");
             System.out.println("2 - Listar Pets");
+            System.out.println("3 - Procurar Pets");
             System.out.println("0 - Sair");
             System.out.print("Digite uma opção: ");
 
@@ -70,6 +71,31 @@ public class Petshop {
                                     lista[i].definirPorte()
                             );
                         }
+                    }
+                    break;
+                case 3:
+
+                    boolean achou = false;
+                    String busca;
+
+                    System.out.print("Digite o nome do animal que gostaria de achar: ");
+                    busca = sc.nextLine();
+
+                    for (int i = 0; i < total; i++) {
+                        if (lista[i].nome.equalsIgnoreCase(busca)) {
+                            System.out.println("O Pet " + lista[i].nome + " está na lista");
+                            achou = true;
+                            System.out.printf(
+                                    "%s (%s) - %.1f kg - Porte %s%n",
+                                    lista[i].nome,
+                                    lista[i].especie,
+                                    lista[i].peso,
+                                    lista[i].definirPorte()
+                            );
+                        }
+                    }
+                    if (!achou) {
+                        System.out.println("Não encontrado.");
                     }
                     break;
                 case 0:
