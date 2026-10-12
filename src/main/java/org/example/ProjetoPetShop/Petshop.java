@@ -19,6 +19,7 @@ public class Petshop {
 
             System.out.println("\n===== SISTEMA DE CADASTRO DE PETS =====");
             System.out.println("1 - Cadastrar Pet");
+            System.out.println("2 - Listar Pets");
             System.out.println("0 - Sair");
             System.out.print("Digite uma opção: ");
 
@@ -53,20 +54,24 @@ public class Petshop {
                                     + total + " pet(s)."
                     );
 
-                    System.out.println("\n--- PETS CADASTRADOS ---");
-
-                    for (int i = 0; i < total; i++) {
-                        System.out.printf(
-                                "%s (%s) - %.1f kg - Porte %s%n",
-                                lista[i].nome,
-                                lista[i].especie,
-                                lista[i].peso,
-                                lista[i].definirPorte()
-                        );
-                    }
-
                     break;
+                case 2:
+                    if (total == 0) {
+                        System.out.println("Nenhum pet cadastrado.");
+                    } else {
+                        System.out.println("\n--- PETS CADASTRADOS ---");
 
+                        for (int i = 0; i < total; i++) {
+                            System.out.printf(
+                                    "%s (%s) - %.1f kg - Porte %s%n",
+                                    lista[i].nome,
+                                    lista[i].especie,
+                                    lista[i].peso,
+                                    lista[i].definirPorte()
+                            );
+                        }
+                    }
+                    break;
                 case 0:
                     System.out.println("Até logo!");
                     continuar = false;
