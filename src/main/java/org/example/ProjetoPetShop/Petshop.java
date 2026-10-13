@@ -43,13 +43,24 @@ public class Petshop {
                             break;
                         }
 
-                        Pet pet = new Pet();
+                        Pet pet;
 
                         System.out.print("Digite o nome do animal: ");
-                        pet.nome = sc.nextLine();
+                        String nome = sc.nextLine();
 
                         System.out.print("Espécie: ");
-                        pet.especie = sc.nextLine();
+                        String especie = sc.nextLine();
+
+                        if (especie.equalsIgnoreCase("cachorro")) {
+                            pet = new Cachorro();
+                        } else if (especie.equalsIgnoreCase("gato")) {
+                            pet = new Gato();
+                        } else {
+                            pet = new Pet();
+                        }
+
+                        pet.nome = nome;
+                        pet.especie = especie;
 
                         System.out.print("Peso: ");
                         pet.peso = sc.nextDouble();
@@ -59,7 +70,6 @@ public class Petshop {
                         total++;
 
                         System.out.println("Pet cadastrado com sucesso!");
-                        break;
                     }
 
                     case 2: {
