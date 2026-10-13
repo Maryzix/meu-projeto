@@ -3,12 +3,14 @@ package org.example.ProjetoPetShop;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayDeque;
 
 public class Petshop {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        ArrayDeque<String> fila = new ArrayDeque<>();
         Pet[] lista = new Pet[5];
 
         int opcao = -1;
@@ -21,6 +23,8 @@ public class Petshop {
             System.out.println("2 - Listar Pets");
             System.out.println("3 - Procurar Pets");
             System.out.println("4 - Mostrar espécies cadastradas");
+            System.out.println("5 - Entrar na fila de banho");
+            System.out.println("6 - Atender próximo pet");
             System.out.println("0 - Sair");
             System.out.print("Digite uma opção: ");
 
@@ -160,6 +164,31 @@ public class Petshop {
 
                         break;
 
+                    case 5: {
+                        System.out.print("Nome do pet pra entrar na fila: ");
+                        String nomePet = sc.nextLine();
+
+                        fila.add(nomePet);
+
+                        System.out.println(nomePet + " entrou na fila.");
+                        System.out.println("Fila agora: " + fila);
+
+                        break;
+                    }
+
+                    case 6: {
+                        if (fila.isEmpty()) {
+                            System.out.println("Não há pets na fila de banho.");
+                        } else {
+                            String proximo = fila.poll();
+
+                            System.out.println("Próximo da fila: " + proximo);
+                            System.out.println("Atendendo " + proximo + "...");
+                            System.out.println("Fila agora: " + fila);
+                        }
+
+                        break;
+                    }
                     case 0:
                         System.out.println("Até logo!");
                         break;
