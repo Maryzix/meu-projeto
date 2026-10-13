@@ -1,17 +1,19 @@
-
 package org.example.ProjetoPetShop;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.ArrayDeque;
 
 public class Petshop {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        ArrayDeque<String> fila = new ArrayDeque<>();
+
         Pet[] lista = new Pet[5];
+        ArrayDeque<String> fila = new ArrayDeque<>();
 
         int opcao = -1;
         int total = 0;
@@ -21,10 +23,11 @@ public class Petshop {
             System.out.println("\n===== SISTEMA DE CADASTRO DE PETS =====");
             System.out.println("1 - Cadastrar Pet");
             System.out.println("2 - Listar Pets");
-            System.out.println("3 - Procurar Pets");
+            System.out.println("3 - Procurar Pet");
             System.out.println("4 - Mostrar espécies cadastradas");
             System.out.println("5 - Entrar na fila de banho");
             System.out.println("6 - Atender próximo pet");
+            System.out.println("7 - Executar serviços do petshop");
             System.out.println("0 - Sair");
             System.out.print("Digite uma opção: ");
 
@@ -34,7 +37,7 @@ public class Petshop {
 
                 switch (opcao) {
 
-                    case 1:
+                    case 1: {
                         if (total >= lista.length) {
                             System.out.println("Limite de pets atingido!");
                             break;
@@ -48,42 +51,18 @@ public class Petshop {
                         System.out.print("Espécie: ");
                         pet.especie = sc.nextLine();
 
-                        // Continua pedindo até receber um peso válido
-                        boolean pesoValido = false;
-
-                        while (!pesoValido) {
-                            try {
-                                System.out.print("Peso em kg: ");
-                                pet.peso = sc.nextDouble();
-                                sc.nextLine();
-
-                                if (pet.peso <= 0) {
-                                    System.out.println(
-                                            "O peso deve ser maior que zero."
-                                    );
-                                } else {
-                                    pesoValido = true;
-                                }
-
-                            } catch (InputMismatchException e) {
-                                System.out.println(
-                                        "Digite um peso numérico válido!"
-                                );
-                                sc.nextLine();
-                            }
-                        }
+                        System.out.print("Peso: ");
+                        pet.peso = sc.nextDouble();
+                        sc.nextLine();
 
                         lista[total] = pet;
                         total++;
 
-                        System.out.println(
-                                "Pet cadastrado! Agora são "
-                                        + total + " pet(s)."
-                        );
-
+                        System.out.println("Pet cadastrado com sucesso!");
                         break;
+                    }
 
-                    case 2:
+                    case 2: {
                         if (total == 0) {
                             System.out.println("Nenhum pet cadastrado.");
                         } else {
@@ -101,27 +80,16 @@ public class Petshop {
                         }
 
                         break;
+                    }
 
-                    case 3:
-                        if (total == 0) {
-                            System.out.println("Nenhum pet cadastrado.");
-                            break;
-                        }
+                    case 3: {
+                        System.out.print("Nome do pet que deseja procurar: ");
+                        String busca = sc.nextLine();
 
                         boolean achou = false;
 
-                        System.out.print(
-                                "Digite o nome do animal que deseja procurar: "
-                        );
-                        String busca = sc.nextLine();
-
                         for (int i = 0; i < total; i++) {
                             if (lista[i].nome.equalsIgnoreCase(busca)) {
-                                System.out.println(
-                                        "O pet " + lista[i].nome
-                                                + " está na lista:"
-                                );
-
                                 System.out.printf(
                                         "%s (%s) - %.1f kg - Porte %s%n",
                                         lista[i].nome,
@@ -131,6 +99,7 @@ public class Petshop {
                                 );
 
                                 achou = true;
+                                break;
                             }
                         }
 
@@ -139,8 +108,9 @@ public class Petshop {
                         }
 
                         break;
+                    }
 
-                    case 4:
+                    case 4: {
                         if (total == 0) {
                             System.out.println("Nenhum pet cadastrado.");
                             break;
@@ -163,22 +133,41 @@ public class Petshop {
                         );
 
                         break;
+                    }
 
                     case 5: {
                         System.out.print("Nome do pet pra entrar na fila: ");
                         String nomePet = sc.nextLine();
 
-                        fila.add(nomePet);
+                        boolean cadastrado = false;
 
-                        System.out.println(nomePet + " entrou na fila.");
-                        System.out.println("Fila agora: " + fila);
+                        for (int i = 0; i < total; i++) {
+                            if (lista[i].nome.equalsIgnoreCase(nomePet)) {
+                                cadastrado = true;
+                                nomePet = lista[i].nome;
+                                break;
+                            }
+                        }
+
+                        if (!cadastrado) {
+                            System.out.println(
+                                    "Pet não cadastrado. Cadastre o pet antes de colocá-lo na fila."
+                            );
+                        } else {
+                            fila.add(nomePet);
+
+                            System.out.println(nomePet + " entrou na fila.");
+                            System.out.println("Fila agora: " + fila);
+                        }
 
                         break;
                     }
 
                     case 6: {
                         if (fila.isEmpty()) {
-                            System.out.println("Não há pets na fila de banho.");
+                            System.out.println(
+                                    "A fila de banho está vazia. Nenhum pet para atender."
+                            );
                         } else {
                             String proximo = fila.poll();
 
@@ -189,12 +178,41 @@ public class Petshop {
 
                         break;
                     }
+
+                    case 7: {
+                        if (fila.isEmpty()) {
+                            System.out.println(
+                                    "Nenhum pet na fila. Não há serviços para executar."
+                            );
+                            break;
+                        }
+
+                        String nomePet = fila.poll();
+
+                        ArrayList<Servico> servicos = new ArrayList<>();
+
+                        servicos.add(new Banho());
+                        servicos.add(new Tosa());
+                        servicos.add(new Consulta());
+
+                        System.out.println("Próximo da fila: " + nomePet);
+
+                        for (Servico servico : servicos) {
+                            servico.executar(nomePet);
+                        }
+
+                        System.out.println("Serviços concluídos para " + nomePet + "!");
+                        System.out.println("Fila agora: " + fila);
+
+                        break;
+                    }
+
                     case 0:
                         System.out.println("Até logo!");
                         break;
 
                     default:
-                        System.out.println("Opção inválida.");
+                        System.out.println("Opção inválida!");
                         break;
                 }
 
