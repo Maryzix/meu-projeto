@@ -86,6 +86,16 @@ public class Petshop {
                                         lista[i].peso,
                                         lista[i].definirPorte()
                                 );
+                                lista[i].emitirSom();
+                            }
+                            if (total > 0) {
+                                System.out.println();
+
+                                mesmoNome(lista[0]);
+
+                                System.out.println("---");
+
+                                mesmoNome(lista[0], "=== FICHA DO PET ===");
                             }
                         }
 
@@ -234,4 +244,17 @@ public class Petshop {
 
         sc.close();
     }
+
+    static void mesmoNome(Pet pet) {
+        System.out.println("Nome: " + pet.nome);
+    }
+
+    static void mesmoNome(Pet pet, String texto) {
+        System.out.println(texto);
+        System.out.println("Nome: " + pet.nome);
+        System.out.println("Espécie: " + pet.especie);
+        System.out.printf("Peso: %.1f kg%n", pet.peso);
+        System.out.println("Porte: " + pet.definirPorte());
+    }
 }
+
