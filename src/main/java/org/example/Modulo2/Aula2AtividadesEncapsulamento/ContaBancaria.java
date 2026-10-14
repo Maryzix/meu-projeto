@@ -1,0 +1,64 @@
+package org.example.Modulo2.Aula2AtividadesEncapsulamento;
+
+public class ContaBancaria {
+
+    private String titular;
+    private double saldo;
+
+    public void depositar(double valor) {
+        if (valor <= 0) {
+            System.out.println("Valor inválido!");
+            return;
+        }
+
+        saldo += valor;
+        registrarLog("deposito de " + valor);
+        System.out.println("Saldo: " + saldo);
+    }
+
+    public void sacar(double valor) {
+        if (valor <= 0) {
+            System.out.println("Valor inválido!");
+            return;
+        }
+
+        if (!temSaldo(valor)) {
+            System.out.println("Saldo insuficiente!");
+            return;
+        }
+
+        saldo -= valor;
+        registrarLog("saque de " + valor);
+        System.out.println("Saldo: " + saldo);
+    }
+
+    private boolean temSaldo(double valor) {
+        return saldo >= valor;
+    }
+
+    private String registrarLog(String acao) {
+       return "[LOG] " + titular + ": " + acao;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setTitular(String titular) {
+        if (titular == null || titular.isEmpty()) {
+            System.out.println("Inválido! Mantido " + this.titular);
+            return;
+        }
+
+        this.titular = titular;
+    }
+
+    private String numeroConta(){
+        return "001-X";
+    }
+
+}
