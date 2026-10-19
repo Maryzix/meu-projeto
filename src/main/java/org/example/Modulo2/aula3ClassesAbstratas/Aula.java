@@ -1,4 +1,4 @@
-package org.example.Modulo2.Aula3ClassesAbstratas;
+package org.example.Modulo2.aula3ClassesAbstratas;
 
 public class Aula {
     public static void main(String[] args) {
