@@ -1,4 +1,4 @@
-package org.example.Modulo2.Aula2AtividadesEncapsulamento;
+package org.example.Modulo2.aula2AtividadesEncapsulamento;
 
 public class ContaBancaria {
 
