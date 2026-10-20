@@ -1,4 +1,4 @@
-package org.example.Modulo2.AtividadesSingleton;
+package org.example.Modulo2.atividadesSingleton;
 
 public class ContadorVisitas {
     //6.  Crie uma classe Singleton chamada ContadorVisitas que:

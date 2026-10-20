@@ -1,5 +1,5 @@
 
-package org.example.aula5_revisao.questao6;
+package org.example.Modulo2.aula5_revisao.questao6;
 
 public abstract class Funcionario {
 

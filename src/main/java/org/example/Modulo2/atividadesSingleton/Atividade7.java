@@ -1,4 +1,4 @@
-package org.example.Modulo2.AtividadesSingleton;
+package org.example.Modulo2.atividadesSingleton;
 
 public class Atividade7 {
     public static void main(String[] args) {
