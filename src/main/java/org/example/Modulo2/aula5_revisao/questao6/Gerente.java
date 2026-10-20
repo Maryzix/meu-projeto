@@ -1,4 +1,4 @@
-package org.example.aula5_revisao.questao6;
+package org.example.Modulo2.aula5_revisao.questao6;
 
 public class Gerente extends Funcionario{
     //Gerente: o salário é o salário base mais 50%. (

@@ -1,4 +1,4 @@
-package org.example.aula5_revisao;
+package org.example.Modulo2.aula5_revisao;
 
 public class Produto {
    //nome (String), preco (double) e quantidade (int)

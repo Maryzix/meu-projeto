@@ -1,4 +1,4 @@
-package org.example.Modulo2.AtividadesSingleton;
+package org.example.Modulo2.atividadesSingleton;
 
 public class Carrinho {
     //7. Crie uma classe Singleton chamada Carrinho que:

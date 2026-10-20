@@ -1,4 +1,4 @@
-package org.example.aula5_revisao;
+package org.example.Modulo2.aula5_revisao;
 
 public class Retangulo extends Forma{
     double largura;
