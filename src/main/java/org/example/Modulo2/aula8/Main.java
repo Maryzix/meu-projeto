@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         //Na Main, crie 3 agendamentos:
+        //
         //   a) Thor, banho, 14h, com perfume e laço, sem hidratação,
         //      "alérgico a shampoo", 10% de desconto
         //   b) Luna, tosa, 10h, sem nenhum extra, sem observação,
