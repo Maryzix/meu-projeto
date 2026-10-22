@@ -1,0 +1,20 @@
+package org.example.Modulo2.aula9_atividades.questao9_facade;
+
+public class ManhaFacade {
+
+    private Despertador despertador;
+    private Cafeteira cafeteira;
+    private Chuveiro chuveiro;
+
+    public ManhaFacade() {
+        this.despertador = new Despertador();
+        this.cafeteira = new Cafeteira();
+        this.chuveiro = new Chuveiro();
+    }
+
+    public void acordar() {
+        despertador.desligar();
+        cafeteira.fazerCafe();
+        chuveiro.ligar();
+    }
+}
